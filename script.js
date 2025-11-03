@@ -1839,7 +1839,7 @@ function mostrarImagenTT() {
   contenedor.style.alignItems = "center";
 
   const imagenBase = document.createElement("img");
-  imagenBase.src = "imagenes/TT.jpg";
+  imagenBase.src = "imagenes/TT.JPG";
   imagenBase.alt = "Ejemplar base";
   imagenBase.style.display = "block";
   imagenBase.style.margin = "0 auto";
@@ -1960,3 +1960,4 @@ function mostrarImagenTT() {
   });
 
   
+
