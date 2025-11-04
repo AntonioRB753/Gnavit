@@ -1,4 +1,7 @@
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -8,9 +11,11 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 .contenedor {
-  width: 375px;
-  height: 667px;
+  width: 100vw;
+  height: 100vh;
+  max-width: 480px; /* opcional: para limitar en pantallas grandes */
   background-color: #fff;
   border: 12px solid #000;
   border-radius: 40px;
@@ -19,6 +24,7 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 .cuadro {
   width: 100%;
   display: flex;
@@ -26,16 +32,19 @@ body {
   border-bottom: 2px solid black;
   background-color: white;
 }
+
 .cuadro h2 {
   margin: 5px 0;
   text-align: center;
   font-size: 1.2em;
   color: #000;
 }
+
 .contenido {
   display: flex;
   height: 100px;
 }
+
 .opciones {
   width: 55%;
   padding: 10px;
@@ -43,12 +52,14 @@ body {
   flex-direction: column;
   justify-content: space-around;
 }
+
 .opciones select {
   padding: 5px;
   font-size: 0.9em;
   border-radius: 4px;
   border: 1px solid #ccc;
 }
+
 .imagen {
   width: 45%;
   padding-right: 10px;
@@ -57,6 +68,7 @@ body {
   justify-content: center;
   overflow: hidden;
 }
+
 .imagen img {
   width: 100%;
   height: 100%;
@@ -65,8 +77,15 @@ body {
   border-radius: 5px;
   display: block;
 }
-.macho { height: 30%; }
-.hembra { height: 30%; }
+
+.macho {
+  height: 30%;
+}
+
+.hembra {
+  height: 30%;
+}
+
 .descendencia {
   height: 40%;
   background-color: white;
@@ -76,6 +95,7 @@ body {
   justify-content: flex-start;
   padding-bottom: 10px;
 }
+
 .color-box {
   width: 40px;
   height: 40px;
@@ -83,6 +103,7 @@ body {
   display: inline-block;
   margin: 5px;
 }
+
 .descendencia .contenido {
   height: 180px;
   width: 100%;
@@ -90,6 +111,7 @@ body {
   justify-content: center;
   align-items: center;
 }
+
 .descendencia .imagen {
   width: 70%;
   height: 100%;
@@ -97,6 +119,7 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 .descendencia .imagen img {
   width: 100%;
   max-height: 100%;
@@ -104,12 +127,14 @@ body {
   border-radius: 5px;
   margin-top: 1em;
 }
+
 .botones {
   margin-top: 10px;
   width: 90%;
   display: flex;
   justify-content: space-between;
 }
+
 .botones button {
   width: 45%;
   padding: 8px;
@@ -121,15 +146,18 @@ body {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
 .botones button:hover {
   background-color: #0056b3;
 }
+
 .selecciones {
   font-size: 0.85em;
   color: #333;
   margin-top: 10px;
   width: 90%;
 }
+
 .selecciones p {
   margin: 3px 0;
 }
