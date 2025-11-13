@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>App Genética Modular</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      /* background-color: #222; */
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .contenedor {
+      width: 375px;
+      height: 667px;
+      /* background-color: #fff; */ 
+      border: 12px solid #000;
+      border-radius: 40px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .pantalla { display: none; flex: 1; flex-direction: column; }
+    .pantalla.activa { display: flex; }
+    .cuadro { width: 100%; display: flex; flex-direction: column; border-bottom: 2px solid black; background-color: white; }
+    .cuadro h2 { margin: 5px 0; text-align: center; font-size: 1.2em; color: #000; }
+    .contenido { display: flex; height: 100px; }
+    .opciones { width: 55%; padding: 10px; display: flex; flex-direction: column; justify-content: space-around; }
+    .opciones select { padding: 5px; font-size: 0.9em; border-radius: 4px; border: 1px solid #ccc; }
+    .imagen { width: 45%; padding-right: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden; height: 120px; width: 140px; }
+    .imagen img { width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: 5px; display: block; }
+    .macho { height: 30%; }
+    .hembra { height: 30%; }
+    .descendencia { height: 40%; background-color: white; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-bottom: 10px; }
+    .descendencia .contenido { height: 180px; width: 100%; display: flex; justify-content: center; align-items: center; }
+    .descendencia .imagen { width: 70%; height: 100%; display: flex; align-items: center; justify-content: center; }
+    .descendencia .imagen img { width: 100%; max-height: 100%; object-fit: contain; margin-top: 1em; }
+    .botones { margin-top: 10px; width: 90%; display: flex; justify-content: space-between; }
+    .botones button { width: 45%; padding: 8px; font-size: 0.9em; border: none; border-radius: 6px; background-color: #007bff; color: white; cursor: pointer; transition: background-color 0.3s ease; }
+    .botones button:hover { background-color: #0056b3; }
+    .navegacion { text-align: center; margin: 10px; }
+    .navegacion button { padding: 8px 16px; font-size: 0.9em; border-radius: 6px; background-color: #007bff; color: white; border: none; cursor: pointer; }
+  </style>
+</head>
+
+<body>
+
+  <div class="contenedor">
+    <!-- Pantalla 1: Menú principal -->
+    <div id="pantalla1" class="pantalla activa">
+      <div style="flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center;background-image: url(imagenes/Gnavit.jpg);">
+      
+     <!--background-color: #40f10a; background-image: url(imagenes/Gnavit.jpg);" --> 
+        <h2></h2>
+        
+    <section id="caracteristicas">
+        
+    <ul>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h2>      DIAMANTE GUOLD   </h2>
+      <li>🔬 Simulación genética </li>
+      <li>🖼️ Visualización de ejemplares </li>
+      <li>📊 Estadísticas de cruzamiento</li>
+      <li>📁 Historial y exportación</li>
+      <li>🌐 Acceso desde cualquier dispositivo</li>
+    </ul>
+  </section>
+
+    <br>
+    <br>
+    <br>
+    <br>
+  <button onclick="navegar('pantalla2')" style="height: 55px; width: 55px; border-radius: 50%; background-color: #09a016; color: white; border: none;">◄►</button>
+          
+  
+  <!-- button onclick="navegar('pantalla2')"> >>> </button> -->
+
+        <!--footer>
+          <p>&copy; 2025 GouldGenetics. Todos los derechos reservados.</p>
+        </footer> -->
+
+      </div>
+    </div>
+
+    <!-- Pantalla 2: Visualización genética -->
+    <div id="pantalla2" class="pantalla">
+      <div class="cuadro macho">
+        <h2>Ejemplar Macho</h2>
+        <div class="contenido">
+          <div class="opciones">
+            <select data-bloque="macho" data-parte="cabeza"><option disabled selected>Seleccione Cabeza</option></select>
+            <select data-bloque="macho" data-parte="pecho"><option disabled selected>Seleccione Pecho</option></select>
+            <select data-bloque="macho" data-parte="dorso"><option disabled selected>Seleccione Dorso</option></select>
+          </div>
+          <div id="bloqueMacho" style="display: flex; flex-direction: column; align-items: center;">
+            <div id="imagenMachoContenedor">
+              <img id="imagenEjemplar" src="imagenes/TT.png" alt="Imagen del macho" style="width: 80%; height: auto;" />
+            </div>
+            <div id="circulosGeneticos">
+              <div id="colorA1" class="color-box"></div>
+              <div id="colorA2" class="color-box"></div>
+              <div id="colorA3" class="color-box"></div>
+              <div id="colorA4" class="color-box"></div>
+              <div id="colorA5" class="color-box"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cuadro hembra">
+        <h2>Ejemplar Hembra</h2>
+        <div class="contenido">
+          <div class="opciones">
+            <select data-bloque="hembra" data-parte="cabeza"><option disabled selected>Seleccione Cabeza</option></select>
+            <select data-bloque="hembra" data-parte="pecho"><option disabled selected>Seleccione Pecho</option></select>
+            <select data-bloque="hembra" data-parte="dorso"><option disabled selected>Seleccione Dorso</option></select>
+          </div>
+          <div id="bloqueHembra" style="display: flex; flex-direction: column; align-items: center;">
+            <div id="imagenHembraContenedor">
+              <img id="imagenEjemplar" src="imagenes/TT.png" alt="Imagen de la Hembra" style="width: 80%; height: auto;" />
+            </div>
+            <div id="circulosGeneticos">
+              <div id="colorB1" class="color-box"></div>
+              <div id="colorB2" class="color-box"></div>
+              <div id="colorB3" class="color-box"></div>
+              <div id="colorB4" class="color-box"></div>
+              <div id="colorB5" class="color-box"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cuadro descendencia">
+        <h2>Descendencia</h2>
+        <div id="Descendencia" style="display: flex; flex-direction: row; justify-content: center; align-items: center; gap: 12px; padding: 10px 0;">
+          <button id="btnIzquierda" style="height: 55px; width: 55px; border-radius: 50%; background-color: #09a016; color: white; border: none;">◄</button>
+          
+         
+          <div id="imagenDescendenciaContenedor" style="width: 200px; height: 190px; border-radius: 50%; overflow: hidden; border: 4px solid #006400; display: flex; align-items: center; justify-content: center;">
+            <img id="imagenEjemplar" src="imagenes/TT.png" alt="Imagen de la Descendencia" style="width: 80%; height: 80%; object-fit: contain;" />
+          </div>
+          <button id="btnDerecha" style="height: 55px; width: 55px; border-radius: 50%; background-color: #09a016; color: white; border: none;">►</button>
+          
+        </div> 
+
+
+
+
+        <div id="circulosGeneticos">
+          <div id="colorC1" class="color-box"></div>
+          <div id="colorC2" class="color-box"></div>
+          <div id="colorC3" class="color-box"></div>
+          <div id="colorC4" class="color-box"></div>
+          <div id="colorC5" class="color-box"></div>
+        </div>
+      </div>
+              <button onclick="navegar('pantalla1')" style="background-color: #09a016; color: white; border: none;">►...◄</button>
+  <script>
+   function navegar(id) {
+     const pantallas = document.querySelectorAll('.pantalla');
+     pantallas.forEach(p => p.classList.remove('activa'));
+     document.getElementById(id).classList.add('activa');
+     window.location.hash = id;
+
+    
+  }
+
+  // Activar pantalla según el hash al cargar
+  window.addEventListener('load', () => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash && document.getElementById(hash)) {
+      navegar(hash);
+    }
+  });
+      
+  </script>
+   <script src="script.js"></script>
+  
+  </body>
+</html>
+
+
